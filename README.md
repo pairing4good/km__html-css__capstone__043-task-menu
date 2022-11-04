@@ -1,20 +1,28 @@
-# 042 Font Styling
+# 043 Task Menu
 
 ```
-Given that the application is available 
-When a user views the application on multiple browsers and devices 
-Then the look and feel of the application is consistent
+Given that a task exists 
+When the user selects the menu options 
+Then they are able to select the Edit option
+```
+
+```
+Given that a task exists 
+When the user selects the menu options 
+Then they are able to select the Delete option
 ```
 
 Steps:
-- the font on the body of the page should be Georgia
-- the fallback font on the body of the page should be 'Times New Roman'
-- the next fallback font on the body of the page should be Times
-- the last fallback font on the body of the page should be serif
-- the kanban column headings should be bold
-- the kanban column headings should have the first letter of each word capitalized through CSS styling
+- the `task-menu-items` class should be hidden by default
+- the `task-menu` class should display the task-menu-items class when hovered over
+- the anchors should not be underlined
+- the anchor text should be black
+- the `task-menu-items` should not have bullet points
+- the `task-menu-items` should have padding of 10px
 
 Resources:
-- https://www.w3schools.com/cssref/pr_font_font-family.asp
-- https://www.w3schools.com/cssref/pr_font_weight.asp
-- https://www.w3schools.com/cssref/pr_text_text-transform.asp
+- https://www.w3schools.com/css/css_dropdowns.asp
+- https://www.w3schools.com/css/css_link.asp
+- https://www.w3schools.com/css/css_text.asp
+- https://www.w3schools.com/css/css_list.asp
+- https://www.w3schools.com/css/css_padding.asp

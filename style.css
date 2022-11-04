@@ -6,6 +6,21 @@
     }
 }
 
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.task-status {
+    border-radius: 10px;
+    text-align: center;
+    min-width: 4em;
+    height: 1em;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 5px;
+    margin: 5px;
+}
+
 .task-form-row {
     display: flex;
     max-width: 625px;
@@ -32,10 +47,6 @@
 
 .right-side {
     flex: 10%;
-}
-
-div {
-    padding: 5px;
 }
 
 .todo {

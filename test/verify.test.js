@@ -37,66 +37,65 @@ afterEach(async () => {
   await browser.close();
 });
 
-describe('the font on the body of the page', () => {
-  it('should be Georgia', async () => {
-    const fontFamily = await page.$eval('body', (body) => {
-      let style = window.getComputedStyle(body);
-      return style.getPropertyValue('font-family');
+describe('the task-menu-items class', () => {
+  it('should be hidden by default', async () => {
+    const display = await page.$eval('.task-menu-items', (taskMenuItems) => {
+      let style = window.getComputedStyle(taskMenuItems);
+      return style.getPropertyValue('display');
     });
       
-    expect(fontFamily).toMatch(/Georgia/g);
+    expect(display).toBe('none');
   });
 });
 
-describe('the fallback font on the body of the page', () => {
-  it(`should be 'Times New Roman'`, async () => {
-    const fontFamily = await page.$eval('body', (body) => {
-      let style = window.getComputedStyle(body);
-      return style.getPropertyValue('font-family');
+describe('the task-menu class', () => {
+  it('should display the task-menu-items class when hovered over', async () => {
+    const matches = await page.$eval('style', (style) => {
+      return style.innerHTML.match(/\.task-menu:hover.*\.task-menu-items.*{[\s\S][^}]*display.*:.*block.*;/g).length
     });
       
-    expect(fontFamily).toMatch(/Georgia.*,.*["']Times New Roman["']/g);
+    expect(matches).toBe(1);
   });
 });
 
-describe('the next fallback font on the body of the page', () => {
-  it('should be Times', async () => {
-    const fontFamily = await page.$eval('body', (body) => {
-      let style = window.getComputedStyle(body);
-      return style.getPropertyValue('font-family');
+describe('the anchors', () => {
+  it('should not be underlined', async () => {
+    const textDecoration = await page.$eval('.task-menu-items a', (anchors) => {
+      let style = window.getComputedStyle(anchors);
+      return style.getPropertyValue('text-decoration');
     });
       
-    expect(fontFamily).toMatch(/Georgia.*,.*["']Times New Roman["'].*,.*Times/g);
+    expect(textDecoration).toContain('none');
   });
 });
 
-describe('the last fallback font on the body of the page', () => {
-  it('should be serif', async () => {
-    const fontFamily = await page.$eval('body', (body) => {
-      let style = window.getComputedStyle(body);
-      return style.getPropertyValue('font-family');
-    });
-      
-    expect(fontFamily).toMatch(/Georgia.*,.*["']Times New Roman["'].*,.*Times.*,.*serif/g);
-  });
-});
-
-describe('the kanban column headings', () => {
-  it('should be bolder', async () => {
-    const fontWeight = await page.$eval('.task-status', (taskStatus) => {
-      let style = window.getComputedStyle(taskStatus);
-      return style.getPropertyValue('font-weight');
-    });
-      
-    expect(fontWeight).toBe('700');
-  });
-
-  it('should have the first letter of each word capatilized through CSS styling', async () => {
-    const textTransform = await page.$eval('.task-status', (taskStatus) => {
-      let style = window.getComputedStyle(taskStatus);
-      return style.getPropertyValue('text-transform');
+describe('the anchor text', () => {
+  it('should be black', async () => {
+    const color = await page.$eval('.task-menu-items a', (anchors) => {
+      let style = window.getComputedStyle(anchors);
+      return style.getPropertyValue('color');
     });
     
-    expect(textTransform).toBe('capitalize');
+    expect(color).toBe('rgb(0, 0, 0)');
+  });
+});
+
+describe('the task-menu-items', () => {
+  it('should not have bullet points', async () => {
+    const listStyle = await page.$eval('.task-menu-items', (items) => {
+      let style = window.getComputedStyle(items);
+      return style.getPropertyValue('list-style');
+    });
+    
+    expect(listStyle).toBe('outside none none');
+  });
+  
+  it('should have padding of 10px', async () => {
+    const padding = await page.$eval('.task-menu-items', (items) => {
+      let style = window.getComputedStyle(items);
+      return style.getPropertyValue('padding');
+    });
+    
+    expect(padding).toBe('10px');
   });
 });

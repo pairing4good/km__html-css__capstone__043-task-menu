@@ -1,0 +1,51 @@
+/* Do not change this file for this exercise*/
+
+@media screen and (max-width: 400px) {
+    .board {
+        flex-direction: column;
+    }
+}
+
+.task-form-row {
+    display: flex;
+    max-width: 625px;
+}
+
+.board {
+    display: flex;
+}
+
+.card {
+    border: solid;
+    margin: 10px;
+    box-shadow: 3px 3px lightgray;
+    padding: 10px;
+}
+
+.column {
+    min-width: 175px;
+}
+
+.left-side {
+    flex: 90%;
+}
+
+.right-side {
+    flex: 10%;
+}
+
+div {
+    padding: 5px;
+}
+
+.todo {
+    background-color: red;
+}
+
+.doing {
+    background-color: yellow;
+}
+
+.done {
+    background-color: green;
+}

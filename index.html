@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .task-status {
+            border-radius: 10px;
+            text-align: center;
+            min-width: 4em;
+            height: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="page-heading">Task Board</h1>
+    <form id="task-form">
+        <div class="task-form-row">
+            <input id="task-description" class="left-side" type="text" placeholder="task description" required>
+            <select id="task-status" class="right-side" name="task-status">
+                <option value="todo">ToDo</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+            </select>
+        </div>
+        <div class="task-form-row">
+            <div class="left-side"></div>
+            <button class="right-side" type="submit">Add</button>
+        </div>
+    </form>
+    <div id="tasks" class="board">
+        <div id="todo-column" class="column">
+            <div id="todo-status-heading" class="todo task-status">todo</div>
+            <div id="task-1" class="card">
+                pack spikes for track meet
+            </div>
+            <div id="task-2" class="card">
+                make my bed
+            </div>
+            <div id="task-3" class="card">
+                walk the dog
+            </div>
+        </div>
+        <div id="doing-column" class="column">
+            <div id="doing-status-heading" class="doing task-status">doing</div>
+            <div id="task-4" class="card">
+                write draft english paper
+            </div>
+            <div id="task-5" class="card">
+                sanding art project
+            </div>
+        </div>
+        <div id="done-column" class="column">
+            <div id="done-status-heading" class="done task-status">done</div>
+            <div id="task-6" class="card">
+                wash the dishes
+            </div>
+            <div id="task-7" class="card">
+                finish math homework
+            </div>
+            <div id="task-8" class="card">
+                practice my trumpet
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
